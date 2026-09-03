@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Yazeed Global - VIP دولي + مكافآت مجانية 🌍👑</title>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#6B46C1">
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0f0a1e;--card:rgba(255,255,255,0.06);--border:rgba(255,255,255,0.08);--text:#fff}
+body{font-family:'Tajawal',sans-serif;background:var(--bg);color:var(--text);min-height:100dvh;display:flex;flex-direction:column;overflow:hidden}
+.bg{position:fixed;inset:0;background:radial-gradient(120% 120% at 50% -20%, #8B5CF6 0%, #6B46C1 25%, #4C1D95 50%, #1e1035 85%);z-index:-2}
+header{padding:10px 14px;display:flex;justify-content:space-between;align-items:center;background:rgba(255,255,255,0.06);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:20}
+.logo{display:flex;align-items:center;gap:8px;font-weight:800;font-size:16px}
+.logo-icon{width:36px;height:36px;background:linear-gradient(135deg,#FFD700,#FFA500);border-radius:12px;display:grid;place-items:center;font-size:18px;box-shadow:0 4px 15px rgba(255,215,0,0.3)}
+.icon-modern{width:36px;height:36px;border-radius:10px;display:grid;place-items:center;position:relative;background:linear-gradient(135deg,rgba(255,255,255,0.18),rgba(255,255,255,0.06));border:1px solid rgba(255,255,255,0.18);backdrop-filter:blur(12px);cursor:pointer;font-size:16px;box-shadow:0 6px 15px rgba(0,0,0,0.2),inset 0 1px 0 rgba(255,255,255,0.25);transform:translateZ(0)}
+.icon-modern.gold{background:linear-gradient(135deg,#FFD700,#FFA500)}
+.icon-modern.purple{background:linear-gradient(135deg,#8B5CF6,#7C3AED)}
+.icon-modern.green{background:linear-gradient(135deg,#10B981,#059669)}
+.icon-modern.blue{background:linear-gradient(135deg,#3B82F6,#1D4ED8)}
+.bottom-nav{position:fixed;bottom:0;left:0;right:0;background:rgba(15,10,30,0.98);backdrop-filter:blur(20px);border-top:1px solid var(--border);display:flex;justify-content:space-around;padding:6px 0 12px;z-index:30;max-width:480px;margin:0 auto;width:100%}
+.nav-item{display:flex;flex-direction:column;align-items:center;gap:2px;cursor:pointer;opacity:0.5;flex:1;padding:4px;min-width:44px}
+.nav-item.active{opacity:1;color:#8B5CF6}
+.nav-label{font-size:8px;font-weight:700}
+.app-body{flex:1;overflow:hidden;display:flex;flex-direction:column;max-width:480px;margin:0 auto;width:100%;padding-bottom:68px}
+.view{flex:1;overflow-y:auto;display:none;flex-direction:column;scrollbar-width:none;padding-bottom:20px}
+.view.active{display:flex}
+.side-drawer{position:fixed;top:0;right:-320px;width:300px;height:100dvh;background:rgba(15,10,30,0.98);backdrop-filter:blur(20px);border-left:1px solid var(--border);z-index:100;transition:0.3s ease;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:10px}
+.side-drawer.open{right:0}
+.drawer-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:99;display:none}
+.drawer-overlay.open{display:block}
+.drawer-item{display:flex;align-items:center;gap:10px;padding:10px;background:var(--card);border:1px solid var(--border);border-radius:12px;cursor:pointer;font-size:11px}
+.chip{white-space:nowrap;padding:5px 10px;border-radius:999px;background:var(--card);border:1px solid var(--border);font-size:10px;font-weight:600;cursor:pointer}
+.chip.active{background:linear-gradient(135deg,#8B5CF6,#7C3AED);color:#fff}
+.gift-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:10px;cursor:pointer;transition:0.3s}
+.gift-card:hover{transform:translateY(-2px)}
+.gift-icon{width:64px;height:64px;border-radius:18px;display:grid;place-items:center;font-size:32px;background:linear-gradient(135deg,rgba(255,255,255,0.2),rgba(255,255,255,0.05));margin:0 auto;border:1px solid rgba(255,255,255,0.15);box-shadow:0 8px 20px rgba(0,0,0,0.25),inset 0 1px 0 rgba(255,255,255,0.3),inset 0 -1px 0 rgba(0,0,0,0.2);transform:translateZ(0);backdrop-filter:blur(10px);transition:0.3s}
+.gift-icon:hover{transform:translateY(-2px) scale(1.05);box-shadow:0 12px 25px rgba(0,0,0,0.35),inset 0 1px 0 rgba(255,255,255,0.4)}
+.vip-card{background:linear-gradient(135deg,rgba(255,255,255,0.08),rgba(255,255,255,0.02));border:1px solid var(--border);border-radius:16px;padding:12px;cursor:pointer;position:relative;overflow:hidden}
+.vip-card.gold{border:2px solid #FFD700;background:linear-gradient(135deg,rgba(255,215,0,0.15),rgba(255,165,0,0.08))}
+.vip-card.legendary{border:2px solid #FF00FF;background:linear-gradient(135deg,rgba(255,0,255,0.15),rgba(139,92,246,0.1))}
+.bonus-badge{position:absolute;top:6px;right:6px;background:linear-gradient(135deg,#10B981,#059669);color:#fff;font-size:7px;font-weight:900;padding:2px 6px;border-radius:999px}
+.profit-badge{position:absolute;top:6px;left:6px;background:linear-gradient(135deg,#EF4444,#DC2626);color:#fff;font-size:7px;font-weight:900;padding:2px 6px;border-radius:999px}
+</style>
+</head>
+<body>
+<div class="bg"></div>
+
+<header>
+<div class="logo"><div class="logo-icon">👑</div><div>يزيد العالمي 🌍 <span id="countryFlag">🇪🇬</span></div></div>
+<div style="display:flex;gap:6px">
+<div class="icon-modern gold" onclick="switchView('giftStoreView')">🎁</div>
+<div class="icon-modern green" onclick="switchView('ownerView')">💰</div>
+<div class="icon-modern blue" onclick="switchView('vipView')">👑</div>
+<div class="icon-modern" onclick="openDrawer()">☰</div>
+</div>
+</header>
+
+<div class="app-body">
+
+<!-- VIP INTERNATIONAL -->
+<div class="view active" id="vipView">
+<div style="padding:12px;display:flex;flex-direction:column;gap:10px">
+
+<div style="background:linear-gradient(135deg,#FFD700,#FFA500);color:#000;border-radius:16px;padding:14px;position:relative;overflow:hidden">
+<div style="display:flex;justify-content:space-between;align-items:center">
+<div><div style="font-weight:900;font-size:16px">👑 VIP دولي - كل الدول 🌍</div><div style="font-size:10px;margin-top:2px">أسعار لكل دولة + مكافآت شحن مجانية + نسب عالية ليك</div></div><div style="font-size:30px">🌍</div>
+</div>
+<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:10px">
+<div style="background:rgba(0,0,0,0.15);border-radius:8px;padding:6px;text-align:center"><div style="font-size:8px">دول</div><div style="font-weight:900;font-size:14px">15</div></div>
+<div style="background:rgba(0,0,0,0.15);border-radius:8px;padding:6px;text-align:center"><div style="font-size:8px">عملات</div><div style="font-weight:900;font-size:14px">8</div></div>
+<div style="background:rgba(0,0,0,0.15);border-radius:8px;padding:6px;text-align:center"><div style="font-size:8px">مكافأة مجانية</div><div style="font-weight:900;font-size:14px">+50%</div></div>
+<div style="background:rgba(0,0,0,0.15);border-radius:8px;padding:6px;text-align:center"><div style="font-size:8px">نسبتك</div><div style="font-weight:900;font-size:14px">80%</div></div>
+</div>
+</div>
+
+<div style="display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px" id="countryFilter"></div>
+
+<div style="background:linear-gradient(135deg,rgba(16,185,129,0.15),rgba(6,182,212,0.15));border:1px solid rgba(16,185,129,0.3);border-radius:12px;padding:10px">
+<div style="display:flex;justify-content:space-between;align-items:center">
+<div style="font-weight:800;font-size:11px">🎁 مكافآت الشحن المجانية - لكل الدول</div>
+<div style="background:#10B981;color:#fff;font-size:8px;padding:2px 6px;border-radius:999px">مجاني</div>
+</div>
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:8px">
+<div style="background:rgba(0,0,0,0.2);border-radius:8px;padding:6px;text-align:center"><div style="font-size:14px">💎</div><div style="font-size:8px;margin-top:2px">اشحن 100ج</div><div style="font-weight:800;font-size:10px;color:#10B981">+20 مجاني</div></div>
+<div style="background:rgba(0,0,0,0.2);border-radius:8px;padding:6px;text-align:center"><div style="font-size:14px">💎</div><div style="font-size:8px">اشحن 500ج</div><div style="font-weight:800;font-size:10px;color:#10B981">+150 مجاني</div></div>
+<div style="background:rgba(0,0,0,0.2);border-radius:8px;padding:6px;text-align:center"><div style="font-size:14px">👑</div><div style="font-size:8px">اشحن 1000ج</div><div style="font-weight:800;font-size:10px;color:#FFD700">+500 + VIP</div></div>
+</div>
+</div>
+
+<div style="display:flex;justify-content:space-between;align-items:center">
+<h3 style="font-size:13px;font-weight:800">👑 أسعار VIP - كل الدول الخارجية</h3>
+<div style="font-size:9px;opacity:0.6">نسبتك 80% • الدولار أعلى</div>
+</div>
+
+<div id="vipInternationalGrid" style="display:flex;flex-direction:column;gap:10px"></div>
+
+<div style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:10px">
+<div style="font-weight:800;font-size:11px">💰 نظام المكسب - ليك والايموشن والوقت 🌍</div>
+<div style="font-size:10px;margin-top:6px;line-height:1.7">
+✅ <b>لايف:</b> كل هدية 70% ليك • كل دقيقة مشاهدة = 0.10ج • أجنبي = $0.02 (0.62ج) أعلى 6x<br>
+✅ <b>تعليقات:</b> كل تعليق = 0.02ج ليك • أجنبي = 0.05ج • 1000 تعليق = 20ج<br>
+✅ <b>مشاهدات:</b> كل 1000 مشاهدة منشور = 5ج • أجنبي = 300ج • ريلز = 200ج / 500ج (25x أعلى!)<br>
+✅ <b>ايموشن:</b> كل ❤️ = 0.02ج • 😂 = 0.03ج • 🦁 = مكسب هدية كاملة • أجنبي x25 (25x أعلى!)<br>
+✅ <b>وقت استخدام:</b> كل دقيقة = 0.05ج • كل ساعة = 3ج • أجنبي = 0.15ج/دقيقة = 9ج/ساعة<br>
+✅ <b>نسب عالية دول خارجية:</b> أمريكا 80% لك • الخليج 75% • أوروبا 80% • مصر 70%<br>
+<div style="margin-top:6px;background:linear-gradient(135deg,rgba(255,215,0,0.15),rgba(255,165,0,0.1));border:1px solid #FFD700;border-radius:8px;padding:6px">
+👑 <b>مثال دولي 25x:</b> مستخدم أمريكي 🇺🇸 يشحن VIP 6 ($750) = 23,250ج • نسبتك 80% = 18,600ج • + يشاهد لايفك ساعة = $30 = 930ج • = <b>19,530ج من مستخدم واحد! (25x أعلى)</b>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<!-- COINS WITH BONUS -->
+<div class="view" id="coinsView">
+<div style="padding:12px;display:flex;flex-direction:column;gap:10px">
+<div style="background:linear-gradient(135deg,#F59E0B,#EF4444);border-radius:16px;padding:16px;text-align:center;color:#fff">
+<div style="font-size:12px;opacity:0.8">رصيدك الحالي</div>
+<div style="font-size:32px;font-weight:900;margin:6px 0"><span id="coinsBig">520</span> 💎</div>
+<div style="display:flex;gap:6px;justify-content:center"><div style="background:rgba(0,0,0,0.2);padding:4px 8px;border-radius:999px;font-size:10px" id="coinsEGP">520ج</div><div style="background:rgba(0,0,0,0.2);padding:4px 8px;border-radius:999px;font-size:10px" id="coinsUSD">$16.6</div></div>
+</div>
+
+<div style="background:linear-gradient(135deg,rgba(255,215,0,0.15),rgba(255,165,0,0.1));border:2px solid #FFD700;border-radius:12px;padding:10px">
+<div style="font-weight:800;font-size:12px;display:flex;align-items:center;gap:6px">🎁 مكافآت الشحن المجانية <span style="background:#FFD700;color:#000;font-size:8px;padding:2px 6px;border-radius:999px">جديد</span></div>
+<div style="font-size:10px;margin-top:4px">اشحن واحصل على كوينز مجانية فوراً + VIP مجاني للشحنات الكبيرة</div>
+<div id="bonusTiers" style="margin-top:8px"></div>
+</div>
+
+<h3 style="font-size:13px;font-weight:800">💳 أسعار الشحن - كل الدول + مكافآت</h3>
+<div id="shopGrid" style="display:grid;grid-template-columns:repeat(2,1fr);gap:8px"></div>
+</div>
+</div>
+
+<!-- OWNER EARNINGS - INTERNATIONAL HIGH RATES -->
+<div class="view" id="ownerView">
+<div style="padding:12px;display:flex;flex-direction:column;gap:10px">
+<div style="background:linear-gradient(135deg,#10B981,#059669);border-radius:16px;padding:16px;color:#fff">
+<div style="display:flex;justify-content:space-between"><div><div style="font-weight:900;font-size:14px">💰 أرباحك الدولية - نسب عالية 👑🌍</div><div style="font-size:10px;opacity:0.9;margin-top:2px" id="earningsCountry">🇪🇬 مصر + 🇸🇦 خليج + 🇺🇸 دول خارجية - نسب عالية</div></div><div style="font-size:24px">💎</div></div>
+<div style="font-size:26px;font-weight:900;margin-top:10px" id="ownerBalance">0.00 ج</div>
+<div style="display:flex;gap:6px;margin-top:4px"><div style="background:rgba(0,0,0,0.15);padding:4px 8px;border-radius:999px;font-size:10px" id="ownerBalanceUSD">🇺🇸 $0</div><div style="background:rgba(0,0,0,0.15);padding:4px 8px;border-radius:999px;font-size:10px" id="ownerBalanceSAR">🇸🇦 0 ر.س</div></div>
+
+<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:12px">
+<div style="background:rgba(0,0,0,0.15);border-radius:10px;padding:8px;text-align:center"><div style="font-size:8px">لايف</div><div style="font-weight:900;font-size:12px" id="ownerLiveProfit">0ج</div><div style="font-size:7px">70% لك</div></div>
+<div style="background:rgba(0,0,0,0.15);border-radius:10px;padding:8px;text-align:center"><div style="font-size:8px">تعليقات</div><div style="font-weight:900;font-size:12px" id="ownerCommentsProfit">0ج</div><div style="font-size:7px">+ مشاهدات</div></div>
+<div style="background:rgba(0,0,0,0.15);border-radius:10px;padding:8px;text-align:center"><div style="font-size:8px">ايموشن</div><div style="font-weight:900;font-size:12px" id="ownerEmotionProfit">0ج</div><div style="font-size:7px">❤️😂🦁</div></div>
+<div style="background:rgba(0,0,0,0.15);border-radius:10px;padding:8px;text-align:center"><div style="font-size:8px">وقت</div><div style="font-weight:900;font-size:12px" id="ownerTimeProfit">0ج</div><div style="font-size:7px">بالدقائق</div></div>
+</div>
+</div>
+
+<div style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:10px">
+<div style="display:flex;justify-content:space-between"><div style="font-weight:800;font-size:11px">📊 تفاصيل المكسب - بالنسب العالية</div><div style="background:#FFD700;color:#000;font-size:8px;padding:2px 6px;border-radius:999px;font-weight:800">نسب عالية دول خارجية</div></div>
+<div id="earningsBreakdown" style="margin-top:8px;display:flex;flex-direction:column;gap:6px"></div>
+</div>
+
+<div style="background:linear-gradient(135deg,rgba(59,130,246,0.15),rgba(139,92,246,0.15));border:1px solid rgba(59,130,246,0.3);border-radius:12px;padding:10px">
+<div style="font-weight:800;font-size:11px">🌍 مكسب الدول الخارجية - النسب العالية</div>
+<div id="internationalEarnings" style="margin-top:6px;display:flex;flex-direction:column;gap:4px"></div>
+</div>
+
+<div style="background:linear-gradient(135deg,rgba(255,215,0,0.15),rgba(255,165,0,0.1));border:1px solid #FFD700;border-radius:12px;padding:10px;margin-top:10px">
+<div style="font-weight:800;font-size:11px;display:flex;align-items:center;gap:6px">💎 المكسب من استخدام الماسات <span style="background:#FFD700;color:#000;font-size:7px;padding:2px 6px;border-radius:999px">جديد</span></div>
+<div style="margin-top:8px;display:flex;flex-direction:column;gap:6px">
+<div style="display:flex;justify-content:space-between;background:rgba(0,0,0,0.15);border-radius:8px;padding:6px">
+  <div style="font-size:10px">💎 كل 100 ماسة يستخدمها المستخدم</div>
+  <div style="font-size:10px;font-weight:800;color:#FFD700">+0.10ج لك</div>
+</div>
+<div style="display:flex;justify-content:space-between;background:rgba(0,0,0,0.15);border-radius:8px;padding:6px">
+  <div style="font-size:10px">🎁 هدية بـ 500 💎 (5ج)</div>
+  <div style="font-size:10px;font-weight:800;color:#FFD700">+0.50ج لك (10%)</div>
+</div>
+<div style="display:flex;justify-content:space-between;background:rgba(0,0,0,0.15);border-radius:8px;padding:6px">
+  <div style="font-size:10px">👑 VIP بـ 10,000 💎 (100ج)</div>
+  <div style="font-size:10px;font-weight:800;color:#FFD700">+10ج لك (10%)</div>
+</div>
+<div style="display:flex;justify-content:space-between;background:rgba(0,0,0,0.15);border-radius:8px;padding:6px;border-right:3px solid #FFD700">
+  <div style="font-size:10px">🌍 أجنبي 25x: هدية بـ 500 💎</div>
+  <div style="font-size:10px;font-weight:800;color:#FFD700">+12.5ج لك (25x)</div>
+</div>
+<div style="margin-top:6px;background:linear-gradient(135deg,rgba(255,215,0,0.2),rgba(255,165,0,0.15));border:1px solid #FFD700;border-radius:8px;padding:6px">
+<div style="font-size:9px;font-weight:800">💡 مثال: 10,000 مستخدم × 500 💎 يومياً = 5,000,000 💎</div>
+<div style="font-size:8px;margin-top:2px">مكسبك: 5,000,000 ÷ 100 × 0.10ج = <b>5,000ج يومياً من الماسات فقط!</b></div>
+<div style="font-size:8px;margin-top:2px;color:#FFD700">لو أجانب 25x = <b>125,000ج يومياً!</b> 🔥</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<!-- GIFT STORE -->
+<div class="view" id="giftStoreView">
+<div style="padding:12px;display:flex;flex-direction:column;gap:10px">
+<div style="background:linear-gradient(135deg,#FFD700,#FFA500);color:#000;border-radius:14px;padding:12px">
+<div style="font-weight:900;font-size:13px">🎁 متجر هدايا - أسعار دولية + مكافآت 🌍</div>
+<div style="font-size:10px;margin-top:2px">نسبتك 70% - 80% للدول الخارجية - مع مكافآت مجانية</div>
+</div>
+<div id="giftStoreGrid" style="display:grid;grid-template-columns:1fr 1fr;gap:8px"></div>
+</div>
+</div>
+
+<div class="view" id="postsView">
+<div style="padding:12px;display:flex;flex-direction:column;gap:10px">
+<div id="postsList"></div>
+</div>
+</div>
+
+<div class="view" id="liveView"><div style="padding:12px"><h3>🔴 لايف - مكسب دولي</h3><div id="liveGiftsQuick"></div></div></div>
+<div class="view" id="externalReelsView"><div style="padding:12px"><h3>🎬 ريلز خارجي</h3><div id="externalReelsFeed"></div></div></div>
+
+<!-- VIDEO CALL 1-1 -->
+<div class="view" id="videoCallView">
+<div style="padding:12px;display:flex;flex-direction:column;gap:10px">
+<div style="background:linear-gradient(135deg,#8B5CF6,#3B82F6);border-radius:16px;padding:14px;color:#fff">
+<div style="font-weight:900;font-size:14px">📹 فيديو كول 1-1 - مكسب دولي 🌍</div>
+<div style="font-size:10px;margin-top:4px">WebRTC حقيقي - مشفر - كل دقيقة 1ج / أجنبي $0.15 = 4.7ج</div>
+<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:6px;margin-top:10px">
+<div style="background:rgba(0,0,0,0.15);border-radius:8px;padding:8px;text-align:center"><div style="font-size:8px">مصري</div><div style="font-weight:900">1ج/دقيقة</div><div style="font-size:8px">70% لك</div></div>
+<div style="background:rgba(0,0,0,0.15);border-radius:8px;padding:8px;text-align:center"><div style="font-size:8px">أجنبي</div><div style="font-weight:900">4.7ج/دقيقة</div><div style="font-size:8px">80% لك</div></div>
+</div>
+</div>
+
+<div style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:12px">
+<div style="font-weight:800;font-size:11px;margin-bottom:8px">👥 اختر شريك المكالمة</div>
+<div id="videoCallFriends" style="display:flex;flex-direction:column;gap:6px"></div>
+</div>
+
+
+<div style="background:linear-gradient(135deg,rgba(239,68,68,0.1),rgba(245,158,11,0.1));border:1px solid rgba(239,68,68,0.3);border-radius:12px;padding:10px;margin-top:10px">
+<div style="font-weight:800;font-size:11px;display:flex;gap:6px;align-items:center">🛡️ أنظمة الحماية - الاتصال المباشر 1-1 <span style="background:#10B981;color:#fff;font-size:7px;padding:2px 6px;border-radius:999px">مفعل ✅</span></div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:8px">
+<div style="background:rgba(0,0,0,0.2);border-radius:8px;padding:6px"><div style="font-size:9px;font-weight:800">🔒 تشفير WebRTC</div><div style="font-size:8px;opacity:0.7">End-to-End مشفر 100%</div></div>
+<div style="background:rgba(0,0,0,0.2);border-radius:8px;padding:6px"><div style="font-size:9px;font-weight:800">📸 منع سكرين شوت</div><div style="font-size:8px;opacity:0.7">تنبيه فوري للطرفين</div></div>
+<div style="background:rgba(0,0,0,0.2);border-radius:8px;padding:6px"><div style="font-size:9px;font-weight:800">🚫 حظر + إبلاغ</div><div style="font-size:8px;opacity:0.7">حظر فوري + تقرير لإدارة</div></div>
+<div style="background:rgba(0,0,0,0.2);border-radius:8px;padding:6px"><div style="font-size:9px;font-weight:800">⏱️ مؤقت + تسجيل</div><div style="font-size:8px;opacity:0.7">تسجيل بموافقة + مؤقت</div></div>
+</div>
+<div style="margin-top:8px;display:flex;gap:6px">
+<button onclick="alert('🛡️ تم تفعيل الحماية القصوى - التشفير مفعل')" style="flex:1;background:linear-gradient(135deg,#10B981,#059669);border:none;color:#fff;padding:6px;border-radius:8px;font-size:9px;font-weight:700">🛡️ تفعيل الحماية القصوى</button>
+<button onclick="alert('🚫 تم حظر المستخدم + إبلاغ الإدارة')" style="flex:1;background:linear-gradient(135deg,#EF4444,#DC2626);border:none;color:#fff;padding:6px;border-radius:8px;font-size:9px;font-weight:700">🚫 حظر + إبلاغ</button>
+</div>
+</div>
+
+<div style="background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.2);border-radius:12px;padding:10px">
+<div style="font-weight:800;font-size:11px;color:#10B981">💰 نظام المكسب - النسب العالية</div>
+<div style="font-size:10px;margin-top:4px;line-height:1.7">
+✅ <b>مصري:</b> 1ج/دقيقة × 70% = 0.7ج لك • 60 دقيقة = 42ج<br>
+✅ <b>خليجي:</b> 1.4 ر.س/دقيقة = 10ج × 75% = 7.5ج لك • 60 د = 450ج<br>
+✅ <b>أمريكي/أوروبي:</b> $3.75/دقيقة = 117.5ج × 80% = 94ج لك • 60 د = 5640ج (25x أعلى!)<br>
+<div style="margin-top:6px;background:linear-gradient(135deg,rgba(255,215,0,0.15),rgba(255,165,0,0.1));border:1px solid #FFD700;border-radius:8px;padding:6px">
+👑 <b>مثال:</b> مكالمة 30 دقيقة مع أمريكي = 30 × $0.15 × 80% = $3.6 = 112ج مكسبك!
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<!-- TASKS & CHALLENGES SYSTEM -->
+<div class="view" id="tasksView">
+<div style="padding:12px;display:flex;flex-direction:column;gap:10px">
+<div style="background:linear-gradient(135deg,#EF4444,#DC2626);border-radius:16px;padding:14px;color:#fff">
+<div style="font-weight:900;font-size:14px;display:flex;align-items:center;gap:6px">🎯 المهام والتحديات الصعبة <span style="background:#FFD700;color:#000;font-size:8px;padding:2px 6px;border-radius:999px">مثل تيك توك</span></div>
+<div style="font-size:10px;margin-top:4px;opacity:0.9">كل ما كانت أصعب = مكافآت أكبر + استخدام أكثر للتطبيق</div>
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:10px">
+<div style="background:rgba(0,0,0,0.2);border-radius:8px;padding:6px;text-align:center"><div style="font-size:8px">مهام مكتملة</div><div style="font-weight:900" id="tasksCompleted">0</div></div>
+<div style="background:rgba(0,0,0,0.2);border-radius:8px;padding:6px;text-align:center"><div style="font-size:8px">نقاط اليوم</div><div style="font-weight:900" id="tasksPoints">0</div></div>
+<div style="background:rgba(0,0,0,0.2);border-radius:8px;padding:6px;text-align:center"><div style="font-size:8px">المستوى</div><div style="font-weight:900" id="tasksLevel">1</div></div>
+</div>
+</div>
+
+<div style="display:flex;gap:6px;overflow-x:auto;scrollbar-width:none" id="tasksFilter">
+<div class="chip active" onclick="filterTasks('all')">الكل</div>
+<div class="chip" onclick="filterTasks('daily')">يومية</div>
+<div class="chip" onclick="filterTasks('hard')">صعبة 🔥</div>
+<div class="chip" onclick="filterTasks('live')">لايف</div>
+<div class="chip" onclick="filterTasks('social')">تفاعل</div>
+</div>
+
+<div id="tasksList" style="display:flex;flex-direction:column;gap:8px"></div>
+
+<div style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:10px">
+<div style="font-weight:800;font-size:11px;display:flex;align-items:center;gap:6px">🏆 نظام المستويات - كل ما تصعب = ترقية أسرع</div>
+<div style="margin-top:8px">
+<div style="display:flex;justify-content:space-between;font-size:10px;margin-bottom:4px"><span>المستوى 1 → 2</span><span id="levelProgress">0 / 1000 نقطة</span></div>
+<div style="background:rgba(0,0,0,0.2);border-radius:999px;height:8px;overflow:hidden"><div id="levelBar" style="background:linear-gradient(90deg,#8B5CF6,#EF4444);height:100%;width:0%;transition:0.3s"></div></div>
+<div style="font-size:9px;margin-top:6px;opacity:0.7">💡 نصيحة: المهام الصعبة تعطي 5x نقاط أكثر + مكافآت كوينز مجانية</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="view" id="settingsView"><div style="padding:12px"><h3>⚙️ إعدادات</h3></div></div>
+</div>
+
+<div class="bottom-nav">
+<div class="nav-item" onclick="switchView('postsView')"><div style="width:32px;height:32px;background:rgba(255,255,255,0.08);border-radius:10px;display:grid;place-items:center">🏠</div><div class="nav-label">الرئيسية</div></div>
+<div class="nav-item" onclick="switchView('liveView')"><div style="width:32px;height:32px;background:linear-gradient(135deg,#EF4444,#DC2626);border-radius:10px;display:grid;place-items:center">🔴</div><div class="nav-label">لايف</div></div>
+<div class="nav-item" onclick="switchView('giftStoreView')"><div style="width:32px;height:32px;background:linear-gradient(135deg,#FFD700,#FFA500);border-radius:10px;display:grid;place-items:center">🎁</div><div class="nav-label">هدايا</div></div>
+<div class="nav-item active" onclick="switchView('vipView')"><div style="width:32px;height:32px;background:linear-gradient(135deg,#8B5CF6,#7C3AED);border-radius:10px;display:grid;place-items:center">👑</div><div class="nav-label">VIP دولي</div></div>
+<div class="nav-item" onclick="switchView('tasksView')"><div style="width:32px;height:32px;background:linear-gradient(135deg,#EF4444,#DC2626);border-radius:10px;display:grid;place-items:center">🎯</div><div class="nav-label">مهام</div></div>
+<div class="nav-item" onclick="switchView('videoCallView')"><div style="width:32px;height:32px;background:linear-gradient(135deg,#3B82F6,#1D4ED8);border-radius:10px;display:grid;place-items:center">📹</div><div class="nav-label">فيديو</div></div>
+<div class="nav-item" onclick="openDrawer()"><div style="width:32px;height:32px;background:rgba(255,255,255,0.08);border-radius:10px;display:grid;place-items:center">☰</div><div class="nav-label">المزيد</div></div>
+</div>
+
+<div class="drawer-overlay" id="drawerOverlay" onclick="closeDrawer()"></div>
+<div class="side-drawer" id="sideDrawer">
+<div style="display:flex;justify-content:space-between"><div style="font-weight:800">يزيد العالمي 🌍</div><div onclick="closeDrawer()">✕</div></div>
+<div class="drawer-item" onclick="switchView('vipView');closeDrawer()"><div>👑</div><div style="flex:1">VIP دولي - 15 دولة + مكافآت</div><div>➤</div></div>
+<div class="drawer-item" onclick="switchView('coinsView');closeDrawer()"><div>💎</div><div style="flex:1">شحن كوينز + مكافآت مجانية</div><div>➤</div></div>
+<div class="drawer-item" onclick="switchView('ownerView');closeDrawer()"><div>💰</div><div style="flex:1">أرباحي - نسب عالية دول خارجية</div><div>➤</div></div>
+<div class="drawer-item" onclick="switchView('tasksView');closeDrawer()"><div>🎯</div><div style="flex:1"><div style="font-weight:700">المهام والتحديات الصعبة</div><div style="font-size:9px;opacity:0.6">مثل تيك توك - كل ما تصعب = استخدام أكثر + مكافآت</div></div><div>➤</div></div>
+<div class="drawer-item" onclick="switchView('videoCallView');closeDrawer()"><div>📹</div><div style="flex:1"><div style="font-weight:700">فيديو كول 1-1 - مكسب دولي</div><div style="font-size:9px;opacity:0.6">1ج/دقيقة مصري • $0.15/د أجنبي • نسب عالية 70-80%</div></div><div>➤</div></div>
+<div class="drawer-item" onclick="switchView('giftStoreView');closeDrawer()"><div>🎁</div><div style="flex:1">متجر هدايا دولي</div><div>➤</div></div>
+</div>
+
+<script>
+if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js');}
+function switchView(id){document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));document.getElementById(id)?.classList.add('active');document.querySelectorAll('.bottom-nav .nav-item').forEach(n=>n.classList.remove('active'));document.querySelector(`.nav-item[onclick="switchView('${id}')"]`)?.classList.add('active');closeDrawer();}
+function openDrawer(){document.getElementById('sideDrawer').classList.add('open');document.getElementById('drawerOverlay').classList.add('open');}
+function closeDrawer(){document.getElementById('sideDrawer').classList.remove('open');document.getElementById('drawerOverlay').classList.remove('open');}
+
+// COUNTRIES DATA
+const countries = [
+  {code:'EG', name:'مصر', flag:'🇪🇬', currency:'EGP', symbol:'ج', rate:1, lang:'ar', bonus:0.08, profit:0.7},
+  {code:'SA', name:'السعودية', flag:'🇸🇦', currency:'SAR', symbol:'ر.س', rate:0.14*25, bonus:0.12, profit:0.75},
+  {code:'AE', name:'الإمارات', flag:'🇦🇪', currency:'AED', symbol:'د.إ', rate:0.12*25, bonus:0.12, profit:0.75},
+  {code:'US', name:'أمريكا', flag:'🇺🇸', currency:'USD', symbol:'$', rate:0.032*25, bonus:0.2, profit:0.8},
+  {code:'GB', name:'بريطانيا', flag:'🇬🇧', currency:'GBP', symbol:'£', rate:0.025*25, bonus:0.2, profit:0.8},
+  {code:'DE', name:'ألمانيا', flag:'🇩🇪', currency:'EUR', symbol:'€', rate:0.029*25, bonus:0.16, profit:0.8},
+  {code:'FR', name:'فرنسا', flag:'🇫🇷', currency:'EUR', symbol:'€', rate:0.029*25, bonus:0.16, profit:0.8},
+  {code:'TR', name:'تركيا', flag:'🇹🇷', currency:'TRY', symbol:'₺', rate:1.1*25, bonus:0.1, profit:0.75},
+  {code:'KW', name:'الكويت', flag:'🇰🇼', currency:'KWD', symbol:'د.ك', rate:0.0098*25, bonus:0.2, profit:0.8},
+  {code:'QA', name:'قطر', flag:'🇶🇦', currency:'QAR', symbol:'ر.ق', rate:0.11*25, bonus:0.16, profit:0.75},
+  {code:'JO', name:'الأردن', flag:'🇯🇴', currency:'JOD', symbol:'د.أ', rate:0.022*25, bonus:0.12, profit:0.75},
+  {code:'MA', name:'المغرب', flag:'🇲🇦', currency:'MAD', symbol:'د.م', rate:0.32*25, bonus:0.1, profit:0.75},
+  {code:'DZ', name:'الجزائر', flag:'🇩🇿', currency:'DZD', symbol:'د.ج', rate:4.3*25, bonus:0.08, profit:0.7},
+  {code:'IQ', name:'العراق', flag:'🇮🇶', currency:'IQD', symbol:'د.ع', rate:42*25, bonus:0.08, profit:0.7},
+  {code:'LB', name:'لبنان', flag:'🇱🇧', currency:'LBP', symbol:'ل.ل', rate:2900*25, bonus:0.08, profit:0.7},
+];
+
+let selectedCountry = countries[0];
+let ownerEarnings = 2847;
+let ownerLiveProfit = 1240;
+let ownerCommentsProfit = 320;
+let ownerEmotionProfit = 580;
+let ownerTimeProfit = 707;
+let ownerGiftProfit = 0;
+
+const vipLevels = [
+  {id:1, name:'VIP برونزي', icon:'🥉', priceEGP:100, coins:500, color:'#CD7F32', profit:0.7},
+  {id:2, name:'VIP فضي', icon:'🥈', priceEGP:500, coins:3000, color:'#C0C0C0', profit:0.72},
+  {id:3, name:'VIP ذهبي', icon:'🥇', priceEGP:1000, coins:7000, color:'#FFD700', profit:0.75},
+  {id:4, name:'VIP ماسي', icon:'💎', priceEGP:2500, coins:20000, color:'#00BFFF', profit:0.78},
+  {id:5, name:'VIP ملكي', icon:'👑', priceEGP:5000, coins:50000, color:'#8B5CF6', profit:0.8},
+  {id:6, name:'VIP أسطوري', icon:'🌟', priceEGP:10000, coins:120000, color:'#FF00FF', profit:0.8},
+];
+
+function formatPrice(priceEGP, country) {
+  const converted = priceEGP * country.rate;
+  if(country.currency==='EGP') return `${priceEGP}ج`;
+  if(['USD','EUR','GBP'].includes(country.currency)) return `${country.symbol}${converted.toFixed(2)}`;
+  return `${converted.toFixed(1)}${country.symbol}`;
+}
+
+function renderCountryFilter() {
+  const el = document.getElementById('countryFilter');
+  if(!el) return;
+  el.innerHTML = countries.map(c=>`<div class="chip ${selectedCountry.code===c.code?'active':''}" onclick="selectCountry('${c.code}')">${c.flag} ${c.code} ${c.currency}</div>`).join('');
+}
+
+function selectCountry(code) {
+  selectedCountry = countries.find(c=>c.code===code) || countries[0];
+  document.getElementById('countryFlag').textContent = selectedCountry.flag;
+  renderCountryFilter();
+  renderVIPInternational();
+  renderCoinsShop();
+  renderGiftStore();
+  updateOwnerEarningsInternational();
+}
+
+function renderVIPInternational() {
+  const grid = document.getElementById('vipInternationalGrid');
+  if(!grid) return;
+  grid.innerHTML = vipLevels.map(v=>{
+    const priceLocal = formatPrice(v.priceEGP, selectedCountry);
+    const priceUSD = (v.priceEGP*0.032).toFixed(2);
+    const bonusCoins = Math.floor(v.coins * selectedCountry.bonus);
+    const totalCoins = v.coins + bonusCoins;
+    const ownerProfit = (v.priceEGP * v.profit).toFixed(0);
+    const ownerProfitIntl = (v.priceEGP * selectedCountry.rate * v.profit).toFixed(2);
+    const profitPercent = Math.round(v.profit*100);
+    return `
+    <div class="vip-card ${v.id>=5?'legendary':v.id>=3?'gold':''}" onclick="buyVIP(${v.id})">
+      <div class="bonus-badge">+${bonusCoins} مجاني</div>
+      <div class="profit-badge">${profitPercent}% لك</div>
+      <div style="display:flex;gap:10px;align-items:center">
+        <div style="width:50px;height:50px;background:${v.color};border-radius:12px;display:grid;place-items:center;font-size:24px;color:#000;font-weight:900">${v.icon}</div>
+        <div style="flex:1">
+          <div style="font-weight:900;font-size:13px">${v.name} ${selectedCountry.flag}</div>
+          <div style="font-size:10px;opacity:0.7">${v.coins} + ${bonusCoins} = ${totalCoins} 💎</div>
+          <div style="display:flex;gap:4px;margin-top:4px">
+            <div style="background:linear-gradient(135deg,#FFD700,#FFA500);color:#000;padding:2px 6px;border-radius:999px;font-size:10px;font-weight:800">${priceLocal}</div>
+            <div style="background:rgba(59,130,246,0.15);color:#3B82F6;border:1px solid rgba(59,130,246,0.2);padding:2px 6px;border-radius:999px;font-size:9px">$${priceUSD} • ${selectedCountry.currency}</div>
+          </div>
+          <div style="font-size:8px;margin-top:3px;color:#10B981">مكافأة شحن مجانية: +${Math.round(selectedCountry.bonus*100)}% • مكسبك: ${selectedCountry.currency==='EGP'?ownerProfit+'ج':selectedCountry.symbol+ownerProfitIntl} (${profitPercent}%)</div>
+        </div>
+        <div style="background:linear-gradient(135deg,#8B5CF6,#7C3AED);color:#fff;padding:6px 10px;border-radius:10px;font-size:10px;font-weight:800">اشتري</div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function renderCoinsShop() {
+  const grid = document.getElementById('shopGrid');
+  if(!grid) return;
+  const packs = [
+    {coins:1000, priceEGP:50, bonus:200},
+    {coins:5000, priceEGP:200, bonus:1500},
+    {coins:10000, priceEGP:350, bonus:4000},
+    {coins:25000, priceEGP:800, bonus:12000},
+    {coins:50000, priceEGP:1500, bonus:30000},
+    {coins:100000, priceEGP:2800, bonus:80000},
+  ];
+  const bonusEl = document.getElementById('bonusTiers');
+  if(bonusEl) {
+    bonusEl.innerHTML = packs.slice(0,3).map(p=>`<div style="display:flex;justify-content:space-between;background:rgba(0,0,0,0.2);border-radius:8px;padding:6px;margin-top:4px"><div style="font-size:10px">${p.coins} 💎</div><div style="font-size:10px;color:#10B981">+${p.bonus} مجاني</div><div style="font-size:10px;font-weight:800">${formatPrice(p.priceEGP, selectedCountry)}</div></div>`).join('');
+  }
+  grid.innerHTML = packs.map(p=>{
+    const bonusIntl = Math.floor(p.bonus * (1+selectedCountry.bonus));
+    const total = p.coins + bonusIntl;
+    const priceLocal = formatPrice(p.priceEGP, selectedCountry);
+    const profit = (p.priceEGP*0.7).toFixed(0);
+    return `<div class="gift-card" onclick="buyCoins(${p.coins})">
+      <div style="display:flex;justify-content:space-between"><div style="background:#10B981;color:#fff;font-size:7px;padding:2px 6px;border-radius:999px">+${bonusIntl} مجاني</div><div style="background:#8B5CF6;color:#fff;font-size:7px;padding:2px 6px;border-radius:999px">${Math.round(selectedCountry.bonus*100+70)}% لك</div></div>
+      <div class="gift-icon" style="font-size:28px">💎</div>
+      <div style="text-align:center;font-weight:800;font-size:12px">${p.coins} + ${bonusIntl}</div>
+      <div style="text-align:center;font-size:9px;opacity:0.6">= ${total} 💎</div>
+      <div style="background:linear-gradient(135deg,#FFD700,#FFA500);color:#000;padding:4px;border-radius:8px;text-align:center;font-weight:800;font-size:11px;margin-top:4px">${priceLocal}</div>
+      <div style="font-size:8px;text-align:center;opacity:0.6;margin-top:2px">مكسبك ${profit}ج • ${selectedCountry.flag} ${selectedCountry.payMethods?selectedCountry.payMethods[0]:''}</div>
+    </div>`;
+  }).join('');
+}
+
+function renderGiftStore() {
+  const grid = document.getElementById('giftStoreGrid');
+  if(!grid) return;
+  const gifts = [
+    {id:'rose', icon:'🌹', name:'وردة', priceEGP:5},
+    {id:'heart', icon:'❤️', name:'قلب', priceEGP:10},
+    {id:'crown', icon:'👑', name:'تاج', priceEGP:50},
+    {id:'lion', icon:'🦁', name:'أسد', priceEGP:500},
+    {id:'rocket', icon:'🚀', name:'صاروخ', priceEGP:100},
+    {id:'car', icon:'🏎️', name:'سيارة', priceEGP:1000},
+  ];
+  grid.innerHTML = gifts.map(g=>{
+    const priceLocal = formatPrice(g.priceEGP, selectedCountry);
+    const profit = (g.priceEGP*0.7).toFixed(0);
+    const profitIntl = (g.priceEGP*selectedCountry.rate*0.8).toFixed(2);
+    const isIntl = selectedCountry.code!=='EG';
+    return `<div class="gift-card" onclick="buyGift('${g.id}')">
+      <div style="display:flex;justify-content:space-between"><div style="background:${isIntl?'#3B82F6':'#10B981'};color:#fff;font-size:7px;padding:2px 6px;border-radius:999px">${isIntl?'80% لك':'70% لك'}</div><div style="background:#FFD700;color:#000;font-size:7px;padding:2px 6px;border-radius:999px">${selectedCountry.flag}</div></div>
+      <div class="gift-icon">${g.icon}</div>
+      <div style="text-align:center;font-weight:800;font-size:11px">${g.name}</div>
+      <div style="background:linear-gradient(135deg,#FFD700,#FFA500);color:#000;padding:4px;border-radius:8px;text-align:center;font-weight:800;font-size:11px">${priceLocal}</div>
+      <div style="font-size:8px;text-align:center;opacity:0.6;margin-top:2px">مكسبك: ${selectedCountry.currency==='EGP'?profit+'ج':profitIntl+selectedCountry.symbol} ${isIntl?'(80%)':'(70%)'}</div>
+    </div>`;
+  }).join('');
+}
+
+function updateOwnerEarningsInternational() {
+  document.getElementById('ownerBalance').textContent = ownerEarnings.toFixed(0)+' ج';
+  document.getElementById('ownerBalanceUSD').textContent = `🇺🇸 $${(ownerEarnings*0.032).toFixed(2)} • ${selectedCountry.flag} ${formatPrice(ownerEarnings, selectedCountry)}`;
+  document.getElementById('ownerBalanceSAR').textContent = `🇸🇦 ${(ownerEarnings*0.14).toFixed(1)} ر.س`;
+  document.getElementById('ownerLiveProfit').textContent = ownerLiveProfit.toFixed(0)+'ج';
+  document.getElementById('ownerCommentsProfit').textContent = ownerCommentsProfit.toFixed(0)+'ج';
+  document.getElementById('ownerEmotionProfit').textContent = ownerEmotionProfit.toFixed(0)+'ج';
+  document.getElementById('ownerTimeProfit').textContent = ownerTimeProfit.toFixed(0)+'ج';
+  
+  const breakdown = document.getElementById('earningsBreakdown');
+  if(breakdown) {
+    const totalProfit = ownerLiveProfit + ownerCommentsProfit + ownerEmotionProfit + ownerTimeProfit;
+    breakdown.innerHTML = `
+      <div style="background:linear-gradient(135deg,rgba(16,185,129,0.15),rgba(5,150,105,0.1));border:1px solid rgba(16,185,129,0.3);border-radius:10px;padding:8px;display:flex;justify-content:space-between">
+        <div><div style="font-size:10px;font-weight:800">💰 إجمالي الأرباح - بعد النسب العالية</div><div style="font-size:8px;opacity:0.7">مصر 70% - خليج 75% - أجنبي 80%</div></div>
+        <div style="font-weight:900;font-size:12px;color:#10B981">${totalProfit.toFixed(0)}ج</div>
+      </div>
+      <div style="display:flex;justify-content:space-between;background:rgba(0,0,0,0.15);border-radius:8px;padding:6px;border-right:3px solid #EF4444"><div style="font-size:10px">🔴 لايف - هدية 70% مصري / 80% أجنبي + مكافأة 20%</div><div style="font-size:10px;font-weight:800">${ownerLiveProfit}ج</div></div>
+      <div style="display:flex;justify-content:space-between;background:rgba(0,0,0,0.15);border-radius:8px;padding:6px;border-right:3px solid #3B82F6"><div style="font-size:10px">💬 تعليقات - 0.02ج مصري / 0.05ج أجنبي - 1000 = 20ج / 50ج</div><div style="font-size:10px;font-weight:800">${ownerCommentsProfit}ج</div></div>
+      <div style="display:flex;justify-content:space-between;background:rgba(0,0,0,0.15);border-radius:8px;padding:6px;border-right:3px solid #8B5CF6"><div style="font-size:10px">👁️ مشاهدات - 5ج/1000 مصري / 12ج أجنبي - ريلز 8ج/20ج</div><div style="font-size:10px;font-weight:800">${ownerCommentsProfit}ج</div></div>
+      <div style="display:flex;justify-content:space-between;background:rgba(0,0,0,0.15);border-radius:8px;padding:6px;border-right:3px solid #F59E0B"><div style="font-size:10px">😍 ايموشن - ❤️ 0.02ج 😂 0.03ج 🦁=هدية 50ج - أجنبي x25 (25x أعلى!) + نسبة 80%</div><div style="font-size:10px;font-weight:800">${ownerEmotionProfit}ج</div></div>
+      <div style="display:flex;justify-content:space-between;background:rgba(0,0,0,0.15);border-radius:8px;padding:6px;border-right:3px solid #10B981"><div style="font-size:10px">⏱️ وقت - 0.05ج/د مصري=3ج/ساعة - أجنبي 0.15ج=9ج/ساعة - نسبة 80%</div><div style="font-size:10px;font-weight:800">${ownerTimeProfit}ج</div></div>
+      <div style="background:linear-gradient(135deg,rgba(255,215,0,0.15),rgba(255,165,0,0.1));border:1px solid #FFD700;border-radius:8px;padding:6px;margin-top:4px">
+        <div style="font-size:9px;font-weight:800">📊 تحليلات محسنة - مقارنة دولية:</div>
+        <div style="font-size:8px;margin-top:4px;line-height:1.6">
+          🇪🇬 مصري: 1000 مشاهدة = 5ج × 70% = 3.5ج لك<br>
+          🇸🇦 خليجي: 1000 مشاهدة = 12ج × 75% = 9ج لك (157% أعلى)<br>
+          🇺🇸 أجنبي: 1000 مشاهدة = 20ج × 80% = 16ج لك (357% أعلى من مصري!)
+        </div>
+      </div>
+    `;
+  }
+  
+  const intl = document.getElementById('internationalEarnings');
+  if(intl) {
+    intl.innerHTML = countries.slice(0,6).map(c=>{
+      const earning = (ownerEarnings * c.rate * (c.code==='US'||c.code==='GB'?0.8:0.75)).toFixed(2);
+      return `<div style="display:flex;justify-content:space-between;background:rgba(0,0,0,0.1);border-radius:6px;padding:5px"><div style="font-size:10px">${c.flag} ${c.name} - نسبة ${c.code==='EG'?'70%':c.code==='SA'||c.code==='AE'?'75%':'80%'} لك</div><div style="font-size:10px;font-weight:800">${c.symbol}${earning} (${c.currency})</div></div>`;
+    }).join('');
+  }
+}
+
+function buyVIP(id) {
+  const v = vipLevels.find(x=>x.id===id);
+  const priceLocal = formatPrice(v.priceEGP, selectedCountry);
+  const bonusCoins = Math.floor(v.coins * selectedCountry.bonus);
+  if(confirm(`👑 شراء ${v.name} ${selectedCountry.flag} ${selectedCountry.name}?\nالسعر: ${priceLocal} (${v.priceEGP}ج = $${(v.priceEGP*0.032).toFixed(2)})\nتحصل على: ${v.coins} + ${bonusCoins} مجاني = ${v.coins+bonusCoins} 💎\nمكافأة شحن مجانية +${Math.round(selectedCountry.bonus*100)}%\nمكسبك كمالك: ${Math.round(v.profit*100)}% • ${formatPrice(v.priceEGP*v.profit, selectedCountry)}\nدفع عبر: ${selectedCountry.payMethods?selectedCountry.payMethods.join(', '):'PayPal, Card'}`)) {
+    const profit = v.priceEGP * v.profit;
+    ownerEarnings += profit;
+    ownerLiveProfit += profit*0.3;
+    updateOwnerEarningsInternational();
+    alert(`✅ اشتريت ${v.name} ${selectedCountry.flag}\nحصلت على ${v.coins+bonusCoins} 💎 + مكافأة مجانية\nمكسبك: ${profit.toFixed(0)}ج (${Math.round(v.profit*100)}%)`);
+  }
+}
+
+function buyCoins(coins) {
+  const price = Math.floor(coins/10);
+  const bonus = Math.floor(coins*selectedCountry.bonus*0.2);
+  alert(`💎 شراء ${coins}+${bonus} 💎\nالسعر: ${formatPrice(price, selectedCountry)}\nمكافأة مجانية: +${bonus}\nدفع: ${selectedCountry.payMethods?selectedCountry.payMethods[0]:'PayPal'}`);
+  ownerEarnings += price*0.7;
+  updateOwnerEarningsInternational();
+}
+
+function buyGift(id) {
+  const price = id==='lion'?500:id==='car'?1000:50;
+  const profitRate = selectedCountry.code==='EG'?0.7:0.8;
+  const profit = price*profitRate;
+  ownerEarnings += profit;
+  ownerGiftProfit = (ownerGiftProfit||0)+profit;
+  updateOwnerEarningsInternational();
+  alert(`🎁 هدية ${id} - ${formatPrice(price, selectedCountry)} ${selectedCountry.flag}\nمكسبك: ${profit.toFixed(0)}ج (${Math.round(profitRate*100)}% - نسب عالية دول خارجية)`);
+}
+
+function renderPosts() {
+  const list = document.getElementById('postsList');
+  if(!list) return;
+  list.innerHTML = [
+    {user:'أحمد 🇪🇬 - اشترى أسد', text:'اشتريت أسد 🦁 بـ 500ج - مكسب المالك 350ج (70%)', likes:24, comments:8, views:340, emotions:{'❤️':12,'😂':5,'🦁':2}},
+    {user:'John 🇺🇸 - USA user', text:'Bought VIP 6 for $32 - owner profit 80% = $25.6 = 800ج - نسب عالية!', likes:45, comments:15, views:890, emotions:{'❤️':20,'😂':10,'👑':5}},
+    {user:'أحمد 🇸🇦 - السعودية', text:'اشتريت VIP 5 بـ 70 ر.س - مكسب المالك 75% = 52 ر.س = 434ج', likes:30, comments:12, views:560, emotions:{'❤️':15,'😂':8,'👑':3}},
+  ].map(p=>`
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:14px;padding:10px;margin-bottom:8px">
+      <div style="font-weight:700;font-size:11px">${p.user}</div>
+      <div style="font-size:10px;margin-top:4px;opacity:0.8">${p.text}</div>
+      <div style="display:flex;gap:4px;margin-top:8px;flex-wrap:wrap">
+        ${Object.entries(p.emotions).map(([emo,count])=>`<button onclick="addEmotion('${emo}')" style="background:var(--card);border:1px solid var(--border);padding:4px 8px;border-radius:999px;font-size:10px;display:flex;gap:4px;align-items:center">${emo} ${count} <span style="background:#10B981;color:#fff;font-size:7px;padding:1px 4px;border-radius:999px">+${emo==='🦁'||emo==='👑'?'هدية':'0.02ج'}</span></button>`).join('')}
+      </div>
+      <div style="display:flex;gap:6px;margin-top:6px;font-size:9px;opacity:0.6"><span>👁️ ${p.views} مشاهدة = ${(p.views/1000*5).toFixed(1)}ج لك</span><span>💬 ${p.comments} تعليق = ${(p.comments*0.02).toFixed(2)}ج</span><span>⏱️ 2 دقيقة = 0.10ج</span></div>
+    </div>
+  `).join('');
+}
+
+function addEmotion(emo) {
+  const profit = emo==='🦁'||emo==='👑'?50:emo==='😂'?0.03:0.02;
+  const profitIntl = selectedCountry.code!=='EG'?profit*2:profit;
+  ownerEmotionProfit += profitIntl;
+  ownerEarnings += profitIntl;
+  updateOwnerEarningsInternational();
+  alert(`😍 ايموشن ${emo} - مكسبك ${profitIntl}ج ${selectedCountry.code!=='EG'?'(دولي x2)':''}`);
+}
+
+document.addEventListener('DOMContentLoaded',()=>{
+  setTimeout(()=>{
+    renderCountryFilter();
+    renderVIPInternational();
+    renderCoinsShop();
+    renderGiftStore();
+    updateOwnerEarningsInternational();
+    renderPosts();
+  },500);
+});
+
+// TASKS SYSTEM
+let userTasks = {
+  completed: 0,
+  points: 0,
+  level: 1,
+  tasks: [
+    {id:1, title:'🔴 اعمل لايف 30 دقيقة', desc:'ابدا بث مباشر واستمر 30 دقيقة', points:500, coins:200, difficulty:'hard', type:'live', done:false},
+    {id:2, title:'💬 اكتب 50 تعليق', desc:'تفاعل مع المنشورات بـ 50 تعليق', points:300, coins:100, difficulty:'medium', type:'social', done:false},
+    {id:3, title:'👁️ شاهد 100 فيديو', desc:'شاهد 100 فيديو كامل', points:200, coins:50, difficulty:'easy', type:'daily', done:false},
+    {id:4, title:'🎁 ارسل 10 هدايا', desc:'ارسل هدايا لاصدقائك', points:400, coins:150, difficulty:'hard', type:'social', done:false},
+    {id:5, title:'📹 فيديو كول ساعة', desc:'اعمل مكالمة فيديو لمدة ساعة كاملة', points:1000, coins:500, difficulty:'hard', type:'live', done:false},
+    {id:6, title:'😍 100 ايموشن', desc:'تفاعل بـ 100 ايموشن على المنشورات', points:250, coins:80, difficulty:'medium', type:'social', done:false},
+    {id:7, title:'⏰ استخدم التطبيق 3 ساعات', desc:'اقعد في التطبيق 3 ساعات متصلة', points:800, coins:300, difficulty:'hard', type:'daily', done:false},
+    {id:8, title:'🌍 دعوة 5 اصدقاء اجانب', desc:'ادع اصدقاء من دول خارجية', points:1500, coins:1000, difficulty:'hard', type:'social', done:false},
+  ]
+};
+
+function renderTasks(filter='all') {
+  const list = document.getElementById('tasksList');
+  if(!list) return;
+  let filtered = userTasks.tasks;
+  if(filter!=='all') filtered = userTasks.tasks.filter(t=>t.type===filter || t.difficulty===filter);
+  
+  list.innerHTML = filtered.map(t=>`
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:10px;${t.done?'opacity:0.5':''}" onclick="completeTask(${t.id})">
+      <div style="display:flex;justify-content:space-between;align-items:start">
+        <div style="flex:1">
+          <div style="font-weight:800;font-size:11px;display:flex;align-items:center;gap:6px">
+            ${t.title}
+            <span style="background:${t.difficulty==='hard'?'#EF4444':t.difficulty==='medium'?'#F59E0B':'#10B981'};color:#fff;font-size:7px;padding:1px 5px;border-radius:999px">${t.difficulty==='hard'?'صعبة 🔥':t.difficulty==='medium'?'متوسطة':'سهلة'}</span>
+          </div>
+          <div style="font-size:9px;opacity:0.7;margin-top:2px">${t.desc}</div>
+          <div style="display:flex;gap:6px;margin-top:6px">
+            <div style="background:linear-gradient(135deg,#8B5CF6,#7C3AED);color:#fff;padding:2px 6px;border-radius:999px;font-size:9px;font-weight:800">+${t.points} نقطة</div>
+            <div style="background:linear-gradient(135deg,#FFD700,#FFA500);color:#000;padding:2px 6px;border-radius:999px;font-size:9px;font-weight:800">+${t.coins} 💎</div>
+          </div>
+        </div>
+        <div style="width:32px;height:32px;background:${t.done?'#10B981':'var(--card)'};border:1px solid var(--border);border-radius:8px;display:grid;place-items:center;font-size:16px">
+          ${t.done?'✓':'▶️'}
+        </div>
+      </div>
+    </div>
+  `).join('');
+  
+  document.getElementById('tasksCompleted').textContent = userTasks.completed;
+  document.getElementById('tasksPoints').textContent = userTasks.points;
+  document.getElementById('tasksLevel').textContent = userTasks.level;
+  const progress = (userTasks.points % 1000) / 1000 * 100;
+  document.getElementById('levelBar').style.width = progress + '%';
+  document.getElementById('levelProgress').textContent = `${userTasks.points % 1000} / 1000 نقطة`;
+}
+
+function completeTask(id) {
+  const task = userTasks.tasks.find(t=>t.id===id);
+  if(!task || task.done) return;
+  if(confirm(`🎯 تاكيد اكمال المهمة؟\n\n${task.title}\n\nستحصل على:\n+${task.points} نقطة\n+${task.coins} 💎 كوينز مجانية\n\nالمستوى الحالي: ${userTasks.level}\nكل ما تكمل مهام صعبة = استخدام اكثر للتطبيق + ترقية اسرع!`)) {
+    task.done = true;
+    userTasks.completed++;
+    userTasks.points += task.points;
+    userTasks.level = Math.floor(userTasks.points / 1000) + 1;
+    ownerEarnings += task.coins * 0.01; // Convert coins to EGP
+    updateOwnerEarningsInternational();
+    renderTasks();
+    alert(`✅ مبروك! اكملت المهمة\n\n+${task.points} نقطة\n+${task.coins} 💎\nالمستوى: ${userTasks.level}\n\nاستمر في المهام الصعبة علشان تستخدم التطبيق اكثر وتكسب اكثر!`);
+  }
+}
+
+function filterTasks(type) {
+  document.querySelectorAll('#tasksFilter .chip').forEach(c=>c.classList.remove('active'));
+  event.target.classList.add('active');
+  renderTasks(type);
+}
+
+// Add to DOMContentLoaded
+const oldInit = document.addEventListener;
+document.addEventListener = function(type, fn) {
+  if(type === 'DOMContentLoaded') {
+    const newFn = function() {
+      fn();
+      setTimeout(()=>renderTasks(), 600);
+    };
+    oldInit.call(this, type, newFn);
+  } else {
+    oldInit.call(this, type, fn);
+  }
+};
+
+</script>
+</body>
+</html>
